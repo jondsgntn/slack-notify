@@ -49,7 +49,7 @@ lines.each do |line|
 	)
 	#if request results in 40x or 50x error (site is down)
 	if res.code =~ /4|5\d{2}/
-		#client.notify(":x: #{uri.host} is down (#{res.code})")
+		client.notify(":x: #{uri.host} is down (#{res.code})")
 		print ":x: - #{uri.host} is down (#{res.code}) \n"
 		count += 1
 	#if request results in 10x, 20x, or 30x (site is up)
@@ -60,7 +60,7 @@ lines.each do |line|
 		count = 0
 	#if request results in nil (request timed out)
 	else
-		#client.notify(":x: #{uri.host} is down (connection timed out)")
+		client.notify(":x: #{uri.host} is down (connection timed out)")
 		print ":x: - #{uri.host} is down (connection timed out) \n"
 		count += 1
 	end
